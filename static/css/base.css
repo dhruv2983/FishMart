@@ -1,0 +1,14 @@
+/* body {
+    background-color: #f1f5f8;
+    opacity: 0.4;
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #f1f5f8 14px), repeating-linear-gradient(#87a8ff55, #87a8ff);
+}
+ */
+
+body {
+    background-color: #f1f5f8;
+    background-image: radial-gradient(circle at 0 0, transparent 0, #f1f5f8 100%), linear-gradient(#87a8ff55, #87a8ff);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: black;
+}

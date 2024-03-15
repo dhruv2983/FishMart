@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center w-100 h-100 pt-5 px-0 mt-5">
+    <div class="bg-white w-50 text-center px-2 py-5 shadow-lg bg-opacity-50 rounded-pill">
+        <H2 class="mt-1 mb-3">Welcome to FishMart</H2>
+        <p>Your online hub for fresh fish and seafood, delivered directly to you.</p>
+        {% if user.is_authenticated %}
+        <p> 
+            {%if user.is_seller %}
+            <a href="/seller_products/" class="btn btn-warning mt-3">Manage Store</a>
+            <a href="/seller_orders/" class="btn btn-primary mt-3">View Orders</a>
+            {%else%}
+            <a href="/products/" class="btn btn-primary mt-3">Explore</a>
+            {%endif%}
+        </p>
+        {% else %}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginModal">
+            Log In
+        </button>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

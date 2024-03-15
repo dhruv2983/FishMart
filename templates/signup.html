@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block css %}
+<style>
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+  input {
+    width: 95%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-4 mb-2">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card card-shadow bg-opacity-0">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Sign Up</h2>
+          <form method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">{{ form.non_field_errors }}</div>
+            {% endif %}
+            {% for field in form %}
+            <div class="form-group">
+              {{ field.label_tag }}
+              <div class="form-control p-1 bg-transparent ">
+                {{ field }}
+              </div>
+              {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+              {% for error in field.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}
+            </div>
+            {% endfor %}
+            <div class="w-100 text-center">
+              <button type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
