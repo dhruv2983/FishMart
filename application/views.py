@@ -95,7 +95,7 @@ def add_product(request):
     Product.objects.create(
         seller=request.user, name=name, price=price, description=description
     )
-    return redirect("/seller/")
+    return redirect("/seller_products/")
 
 
 @login_required
@@ -108,14 +108,14 @@ def edit_product(request, product_id):
         product.description = request.POST.get("product_description")
         product.save()
 
-    return redirect("/seller/")
+    return redirect("/seller_products/")
 
 
 @login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id, seller=request.user)
     product.delete()
-    return redirect("/seller/")
+    return redirect("/seller_products/")
 
 @login_required
 def seller_orders(request):
